@@ -6,29 +6,28 @@ pipeline {
         sh 'echo \'mvn build\''
       }
     }
-    stage('Unit Test') {
+    stage('Integration') {
       parallel {
-        stage('Test') {
+        stage('Integration') {
           steps {
-            sh 'echo \'test\''
-            echo 'test 2'
+            echo 'Integration test passed !'
           }
         }
-        stage('UI Test') {
+        stage('System Test') {
           steps {
-            echo 'UI test'
-          }
-        }
-        stage('Integration Test') {
-          steps {
-            echo 'Integration Test'
+            echo 'System Test complete !'
           }
         }
       }
     }
-    stage('Publish to Artifactory') {
+    stage('User Acceptance') {
       steps {
-        echo 'artifactory'
+        echo 'BAP signed !'
+      }
+    }
+    stage('Release') {
+      steps {
+        echo 'Realese Successed !'
       }
     }
   }
